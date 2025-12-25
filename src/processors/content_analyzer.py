@@ -113,6 +113,12 @@ class ContentAnalyzer:
         if isinstance(analysis['tags'], str):
             analysis['tags'] = [tag.strip() for tag in analysis['tags'].split(',')]
 
+        # Sanitize tags (remove spaces, special chars, lowercase)
+        analysis['tags'] = [self._sanitize_tag(tag) for tag in analysis['tags']]
+
+        # Remove empty tags
+        analysis['tags'] = [tag for tag in analysis['tags'] if tag]
+
         # Limit number of tags
         max_tags = self.config.get('ai', {}).get('analysis', {}).get('max_tags', 5)
         analysis['tags'] = analysis['tags'][:max_tags]
@@ -150,6 +156,38 @@ class ContentAnalyzer:
             sanitized = sanitized[:max_length].strip()
 
         return sanitized or "Untitled Note"
+
+    def _sanitize_tag(self, tag: str) -> str:
+        """
+        Sanitize tag to be safe for use in YAML and as hashtags.
+
+        Args:
+            tag: Raw tag
+
+        Returns:
+            Sanitized tag (lowercase, no spaces, safe characters)
+        """
+        import re
+
+        if not tag or not tag.strip():
+            return ""
+
+        # Convert to lowercase
+        tag = tag.lower().strip()
+
+        # Replace spaces and underscores with hyphens
+        tag = re.sub(r'[\s_]+', '-', tag)
+
+        # Remove special characters except hyphens
+        tag = re.sub(r'[^\w-]', '', tag)
+
+        # Remove leading/trailing hyphens
+        tag = tag.strip('-')
+
+        # Collapse multiple hyphens
+        tag = re.sub(r'-+', '-', tag)
+
+        return tag
 
     def _sanitize_folder_path(self, folder: str) -> str:
         """
