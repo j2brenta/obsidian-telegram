@@ -1,0 +1,27 @@
+# Telegram Bot Framework
+python-telegram-bot==21.0.1
+
+# AI Providers
+anthropic==0.40.0              # Claude API
+ollama==0.4.4                  # Ollama local LLM client
+
+# Media Processing
+pytesseract==0.3.13            # OCR for images
+Pillow==11.0.0                 # Image processing
+pydub==0.25.1                  # Audio processing (for voice notes)
+
+# Article Processing
+requests==2.32.3               # HTTP requests
+beautifulsoup4==4.12.3         # HTML parsing
+newspaper3k==0.2.8             # Article extraction
+readability-lxml==0.8.1        # Alternative article extraction
+lxml==5.3.0                    # XML/HTML processing
+
+# Configuration Management
+python-dotenv==1.0.1           # .env file loading
+PyYAML==6.0.2                  # YAML config parsing
+
+# Utilities
+python-dateutil==2.9.0         # Date handling
+aiohttp==3.11.11               # Async HTTP for downloads
+markdown==3.7                  # Markdown processing

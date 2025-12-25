@@ -1,0 +1,83 @@
+# AI Provider Configuration
+ai:
+  # Provider: "claude" or "ollama"
+  provider: ollama
+
+  # Claude API Configuration
+  claude:
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 2000
+    temperature: 0.7
+
+  # Ollama Local LLM Configuration
+  ollama:
+    model: llama3.1:8b  # or mistral, phi3, etc.
+    temperature: 0.7
+
+  # AI Analysis Settings
+  analysis:
+    generate_summary: true
+    max_summary_length: 300
+    extract_entities: true
+    suggest_connections: true
+    max_tags: 5
+    min_confidence_threshold: 0.6
+
+# Obsidian Vault Configuration
+obsidian:
+  # Note creation settings
+  incoming_folder: '00 - Inbox'  # Relative to vault root
+
+  # Filename strategy: "timestamp", "ai_title", or "hybrid"
+  filename_strategy: hybrid  # e.g., "2025-01-15-ai-generated-title.md"
+
+  # Metadata format
+  frontmatter:
+    include_source: true
+    include_timestamp: true
+    include_ai_metadata: true
+    tag_format: yaml  # "yaml" (frontmatter) or "inline" (#hashtags)
+
+  # Note template (can be customized)
+  template_style: default  # "default", "minimal", or "detailed"
+
+# Media Processing Configuration
+media:
+  # Image processing
+  ocr:
+    enabled: true
+    language: eng  # Tesseract language code
+    include_in_note: true
+
+  # Download settings
+  download_media: true
+  media_folder: _attachments  # Relative to vault root
+
+  # Article processing
+  article_summary:
+    enabled: true
+    fetch_full_text: true
+    max_length: 500
+    include_metadata: true
+
+# Bot Behavior Configuration
+bot:
+  # Feedback settings
+  send_preview: true
+  preview_format: markdown  # "text" or "markdown"
+
+  # Processing
+  auto_save: true
+  batch_processing: false  # Future feature
+
+  # Error handling
+  fallback_on_ai_error: true
+  retry_failed_operations: true
+  max_retries: 3
+
+# Logging Configuration
+logging:
+  file: logs/bot.log
+  max_size_mb: 10
+  backup_count: 5
+  console_output: true
