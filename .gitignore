@@ -59,6 +59,5 @@ media_cache/
 .pytest_cache/
 .coverage
 htmlcov/
-*.md
 implementation_plan.md
 implementation_result.md
