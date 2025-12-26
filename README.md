@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="obsidian-telegram.png" width="1000" alt="Obsidian Telegram"/>
+</p>
+
 # Obsidian Telegram Bot
 
 An intelligent Telegram bot that automatically saves messages to your Obsidian vault with AI-powered organization, tagging, and connection detection. Perfect for INTPs who collect lots of information but need help with structure and organization.
